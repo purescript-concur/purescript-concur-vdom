@@ -1,0 +1,23 @@
+{
+  "name": "purescript-concur-vdom",
+  "version": "0.1.0",
+  "description": "Concur UI framework for Purescript, Halogen-VDom backend.",
+  "license": "MIT",
+  "repository": "purescript-concur/purescript-concur-vdom",
+  "author": {
+    "name": "Anupam Jain",
+    "email": "ajnsit -at- alphabets email service"
+  },
+  "files": [],
+  "scripts": {
+    "build": "spago build",
+    "start": "parcel index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "purescript": "^0.15.7",
+    "purs-tidy": "^0.9.2",
+    "rimraf": "^3.0.2",
+    "spago": "^0.20.9"
+  }
+}
