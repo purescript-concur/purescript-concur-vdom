@@ -1,7 +1,7 @@
 module Main where
 
 import Concur.Core (Widget)
-import Concur.Core.VDom (HTML, el, handle, run, text)
+import Concur.VDom (HTML, el, handle, run, text)
 import Control.Applicative (pure)
 import Control.Bind (discard, (>>=))
 import Data.CommutativeRing ((+))

@@ -3,7 +3,6 @@ module Concur.VDom where
 import Concur.Core (Widget, runWidget)
 import Concur.Core.DOM as CD
 import Concur.Core.LiftWidget (class LiftWidget, liftWidget)
-import Concur.Core.Thunk as T
 import Concur.Core.Types (display, result)
 import Control.Applicative (pure)
 import Control.Bind (bind, discard)
@@ -23,6 +22,7 @@ import Effect.Uncurried (runEffectFn1, runEffectFn2)
 import Halogen.VDom as V
 import Halogen.VDom.DOM.Prop as P
 import Halogen.VDom.Machine (Step)
+import Halogen.VDom.Thunk as T
 import Halogen.VDom.Types (ElemName(..), VDom(..))
 import Safe.Coerce (coerce)
 import Web.DOM (Node, Element)
@@ -42,7 +42,7 @@ type HTMLProps :: Type -> Type
 type HTMLProps a = Array (P.Prop a)
 
 type HTMLBody :: Type -> Type
-type HTMLBody a = T.Thunk (HTMLF a)
+type HTMLBody a = T.Thunk HTMLF a
 
 type HTMLSpec a = V.VDomSpec (HTMLProps a) (HTMLBody a)
 type HTMLVDom a = VDom (HTMLProps a) (HTMLBody a)
@@ -110,7 +110,7 @@ el
   -> Array (P.Prop a)
   -> Array (m a)
   -> m a
-el s = CD.el' \a c -> HTMLF (V.Elem Nothing (ElemName s) a (coerce c))
+el s = CD.elArr' \a v -> HTMLF (V.Elem Nothing (ElemName s) a (coerce v))
 
 text :: forall m a. LiftWidget HTML m => String -> m a
 text s = liftWidget $ display ([ HTMLF (Text s) ] :: HTML)

@@ -103,7 +103,29 @@ let upstream =
         sha256:e56fbdf33a5afd2a610c81f8b940b413a638931edb41532164e641bb2a9ec29c
 
 in upstream
+with concur-core =
+  { dependencies =
+    [ "arrays"
+    , "control"
+    , "effect"
+    , "either"
+    , "foldable-traversable"
+    , "free"
+    , "identity"
+    , "lazy"
+    , "maybe"
+    , "newtype"
+    , "prelude"
+    , "profunctor-lenses"
+    , "refs"
+    , "tailrec"
+    , "transformers"
+    , "tuples"
+    , "unsafe-reference"
+    ]
+  , repo = "https://github.com/purescript-concur/purescript-concur-core"
+  , version = "main"
+  }
 
-with concur-core = ../purescript-concur-core/spago.dhall as Location
 with concur-vdom = ./spago.dhall as Location
 
